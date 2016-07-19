@@ -22,6 +22,10 @@ import javax.swing.filechooser::FileNameExtensionFilter
 
 MAXEMAIL_CONST = 30 #Maximum 30 emails to send.
 
+system "clear"
+puts "Welcome to Ruby Email Bot, By Vincent Gosselin"
+sleep(5)
+system "clear"
 
 class Example < JFrame
   
@@ -34,7 +38,7 @@ class Example < JFrame
     def initUI
       
         @panel = JPanel.new
-        @panel.setLayout GridLayout.new 3, 2
+        @panel.setLayout GridLayout.new 2, 2
 
         #CV Button.
         cvButton = JButton.new "Open CV"
@@ -46,8 +50,8 @@ class Example < JFrame
             if ret == JFileChooser::APPROVE_OPTION
                 file = chooseFile.getSelectedFile
                 puts "We got your CV : " + file.getName
-                #text = self.readFile file
-                #@area.setText text.to_s     
+                sleep(5)
+                system "clear"   
             end    
         end
 
@@ -61,8 +65,8 @@ class Example < JFrame
             if ret == JFileChooser::APPROVE_OPTION
                 file = chooseFile.getSelectedFile
                 puts "We got your Cover Letter: " + file.getName
-                #text = self.readFile file
-                #@area.setText text.to_s     
+                sleep(5)
+                system "clear"      
             end    
         end
         
@@ -82,7 +86,9 @@ class Example < JFrame
                     validation = 1  #We're done here.
                 end
             end
-        puts "Email configured"        
+        puts "Email configured"
+        sleep(5)
+        system "clear"         
         end
         
         emailListButton = JButton.new "Email List"
@@ -92,21 +98,25 @@ class Example < JFrame
             while validation == 0 do
                 puts "How many Emails you want to send?"
                 i = gets.chomp
-                    if(i < MAXEMAIL_CONST)
-                    validation = 1
-                    puts "great"
+                    if i.to_i < MAXEMAIL_CONST
+                        validation = 1
+                        puts "great"
+                    else
+                    puts "WARNING! You can only send " + MAXEMAIL_CONST.to_s + " emails "
                     end
-                puts "You have maximum :" + MAXEMAIL_CONST.to_s + " emails you can send"   
             end        
             puts "We are going to send " + i.to_s + " Emails"
             j = 1 #counter for entering email addresses.
-            list = Array.new(i)
-            # until j == i do
-            #     puts "Enter company Email #" + j.to_s + " Right now : "
-            #     list[j-1] = gets.chomp
-            #     puts list[j-1].to_s
-            #     j++
-            # end   
+            list = Array.new(i.to_i)
+            until j.to_i == i.to_i+1 do
+                puts "Enter company Email #" + j.to_s + " Right now : "
+                list[j.to_i-1] = gets.chomp
+                puts "                        -----> " + list[j.to_i-1].to_s
+                j+=1
+            end
+            puts "Email List Configured"
+            sleep(5)
+            system "clear"     
         end
 
 
@@ -121,7 +131,7 @@ class Example < JFrame
       
         
         self.setDefaultCloseOperation JFrame::EXIT_ON_CLOSE
-        self.setSize 600, 600
+        self.setSize 300, 300
         self.setLocationRelativeTo nil
         self.setVisible true
     end
