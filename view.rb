@@ -1,13 +1,4 @@
-#!/usr/local/bin/jruby
-
-# ZetCode JRuby Swing tutorial
-# 
-# This program demonstrates
-# message dialogs.
-# 
-# author: Jan Bodnar
-# website: www.zetcode.com
-# last modified: December 2010
+#This is the View file of the RubyEmailBot
 
 
 include Java
